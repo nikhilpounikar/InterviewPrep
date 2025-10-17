@@ -5,10 +5,14 @@ System.out.println("Last Element: " + last);
 
 
 // Sum of digit of number
-        int num = 12345;
-        String numStr = String.valueOf(num);
-        
-        int sum = Arrays.stream(numStr.split(""))
-              .mapToInt(Integer::parseInt)
-              .sum();
+int num = 12345;
+String numStr = String.valueOf(num);        
+int sum = Arrays.stream(numStr.split(""))
+    .mapToInt(Integer::parseInt)
+    .sum();
 
+// Find the factorial
+int number = 5;
+int factorial = IntStream.rangeClosed(1, number)
+    .reduce(1, (a, b) -> a * b);
+System.out.println("Factorial: " + factorial);
