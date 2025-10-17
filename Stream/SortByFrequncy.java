@@ -21,5 +21,26 @@ public class Main {
                 }
               });
     }
+
+    static int[] sortByFrequencyAndReturnByPrimitiveArray() {
+
+        int [] arr = {1,1,1,2,2,2,2,3,4,4,7,6};
+        
+        int[] ans = Arrays.stream(arr).boxed()
+               .collect(Collectors.groupingBy(x->x,LinkedHashMap::new,Collectors.counting()))
+               .entrySet()
+               .stream()
+               .sorted((x,y)->-1*Long.compare(x.getValue(),y.getValue()))
+               .flatMap(x->{
+                           Long times = x.getValue();
+                           List<Integer> list = new ArrayList<>();
+                           while(times-->0) list.add(x.getKey());
+                           return list.stream();
+               })
+               .mapToInt(Integer::intValue)
+               .peek(System.out::println)
+               .toArray();
+        return ans;
+    }
     
 }
