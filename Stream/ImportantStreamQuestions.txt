@@ -2,3 +2,13 @@
 List<Integer> numbers = List.of(1, 2, 3, 4, 5);
 int last = numbers.stream().reduce((a, b) -> b).orElse(0);
 System.out.println("Last Element: " + last);
+
+
+// Sum of digit of number
+        int num = 12345;
+        String numStr = String.valueOf(num);
+        
+        int sum = Arrays.stream(numStr.split(""))
+              .mapToInt(Integer::parseInt)
+              .sum();
+
